@@ -1,0 +1,208 @@
+/* === Base === */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f2f2f7;
+  color: #1c1c1e;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 480px;
+  margin: auto;
+  padding: 1rem;
+}
+
+/* === App Title === */
+.app-title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #d62828;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* === Banners === */
+.ad-banner {
+  background: #fffbe6;
+  border: 1px solid #ffe58f;
+  padding: 12px;
+  margin: 10px 0;
+  text-align: center;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  color: #664d03;
+}
+
+/* === Buttons === */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.button-group button {
+  padding: 14px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(to right, #007aff, #0a84ff);
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0, 122, 255, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.button-group button:active {
+  transform: scale(0.98);
+  background: #0060df;
+}
+
+/* === Section Cards === */
+.section {
+  display: none;
+  background: #ffffff;
+  padding: 1.2rem;
+  border-radius: 18px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  margin-bottom: 1rem;
+}
+
+.section.visible {
+  display: block;
+}
+
+.section h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: #0a84ff;
+}
+
+/* === Inputs === */
+input,
+select {
+  width: 100%;
+  padding: 14px;
+  margin: 0.6rem 0;
+  border: 1px solid #d1d1d6;
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: #fff;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #0a84ff;
+  outline: none;
+}
+
+/* === Form Buttons === */
+.section button {
+  width: 100%;
+  padding: 14px;
+  background: #ff3b30;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(255, 59, 48, 0.25);
+}
+
+.section button:hover {
+  background-color: #c62828;
+}
+
+.section button:active {
+  transform: scale(0.97);
+}
+
+/* === Location Button === */
+.location-btn {
+  background-color: #34c759;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  padding: 12px;
+  width: 100%;
+  font-size: 1rem;
+  margin-top: -0.4rem;
+  margin-bottom: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.location-btn:hover {
+  background-color: #28a745;
+}
+
+.location-btn:active {
+  transform: scale(0.97);
+}
+
+/* === Search Results === */
+#resultList {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+#resultList li {
+  background: #f2f2f7;
+  padding: 12px;
+  margin: 6px 0;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  border: 1px solid #e5e5ea;
+}
+
+/* === Modal === */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 18px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+  margin-bottom: 1rem;
+  color: #d62828;
+}
+
+.modal-content p {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.modal-content button {
+  padding: 12px 24px;
+  background-color: #0a84ff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.modal-content button:active {
+  transform: scale(0.97);
+}

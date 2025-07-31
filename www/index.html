@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Drop2Life" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="manifest" href="manifest.json" />
+  <title>Drop2Life</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBlMoPCgZvoG_kHVWjVExU3trxPLmfszw&libraries=places"></script>
+</head>
+<body>
+  <div class="container">
+    <h1 class="app-title">🩸 Drop2Life</h1>
+
+    <div class="ad-banner">📢 Help Save Lives — Donate Blood!</div>
+
+    <div class="button-group">
+      <button onclick="showSection('registerSection')">📝 Register</button>
+      <button onclick="showSection('searchSection')">🔍 Search Donors</button>
+      <button onclick="showSection('aboutSection')">ℹ️ About</button>
+      <button onclick="showSection('shareSection')">📤 Share App</button>
+    </div>
+
+    <!-- Register Section -->
+    <div id="registerSection" class="section">
+      <h2>📝 Register as Donor</h2>
+      <input type="text" id="name" placeholder="👤 Enter Name" />
+      <select id="bloodGroup">
+        <option value="">🩸 Select Blood Group</option>
+        <option value="O-">O-</option><option value="O+">O+</option>
+        <option value="A-">A-</option><option value="A+">A+</option>
+        <option value="B-">B-</option><option value="B+">B+</option>
+        <option value="AB-">AB-</option><option value="AB+">AB+</option>
+      </select>
+      <input type="text" id="location" placeholder="📍 Location" />
+      <button type="button" onclick="useMyLocation()" class="location-btn">📍 Use My Location</button>
+      <input type="text" id="contact" placeholder="📞 Contact Number" maxlength="10" />
+      <button onclick="registerDonor()">✅ Submit</button>
+    </div>
+
+    <!-- Search Section -->
+    <div id="searchSection" class="section">
+      <h2>🔍 Find Donors</h2>
+      <select id="searchBlood">
+        <option value="">🩸 Select Blood Group</option>
+        <option>O-</option><option>O+</option>
+        <option>A-</option><option>A+</option>
+        <option>B-</option><option>B+</option>
+        <option>AB-</option><option>AB+</option>
+      </select>
+      <button onclick="searchDonors()">🔎 Search</button>
+      <ul id="resultList"></ul>
+    </div>
+
+    <!-- About Section -->
+    <div id="aboutSection" class="section">
+      <h2>ℹ️ About Our Team</h2>
+      <p><strong>Team Name:</strong> RakthaBandhu</p>
+      <p><strong>Developers:</strong> Banny, Hameed, Ajay, Vivek, Nikilesh, Ganesh, Nihal</p>
+      <p>We are 2nd year B.Tech students from Sri Vasavi Engineering College, Tadepalligudem. This app is built to make blood donation easier, faster, and more accessible to save lives. ❤️</p>
+    </div>
+
+    <!-- Share Section -->
+    <div id="shareSection" class="section">
+      <h2>📤 Share Drop2Life</h2>
+      <p>Click the button below to share the app and save lives!</p>
+      <button onclick="shareApp()">📢 Share Now</button>
+    </div>
+
+    <div class="ad-banner bottom">🔁 Stay connected — Be a Lifesaver Today!</div>
+  </div>
+
+  <!-- ✅ Accept Terms Modal -->
+  <div id="termsModal" class="modal">
+    <div class="modal-content">
+      <h2>📜 Terms and Conditions</h2>
+      <p>By using Drop2Life, you agree to provide accurate information and not misuse donor data.</p>
+      <button onclick="acceptTerms()">I Agree & Continue</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
