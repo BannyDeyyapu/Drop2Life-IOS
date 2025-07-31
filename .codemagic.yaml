@@ -1,0 +1,26 @@
+workflows:
+  ios-workflow:
+    name: Drop2Life iOS Build
+    environment:
+      vars:
+        XCODE_PROJECT: "ios/App/App.xcodeproj"
+        XCODE_SCHEME: "App"
+      xcode: latest
+    scripts:
+      - name: Install dependencies
+        script: |
+          npm install
+          npx cap sync ios
+      - name: Build iOS app
+        script: |
+          xcodebuild -project $XCODE_PROJECT \
+                     -scheme $XCODE_SCHEME \
+                     -sdk iphoneos \
+                     -configuration Release \
+                     archive -archivePath $HOME/build.xcarchive
+          xcodebuild -exportArchive \
+                     -archivePath $HOME/build.xcarchive \
+                     -exportOptionsPlist exportOptions.plist \
+                     -exportPath $HOME/build
+    artifacts:
+      - build/**/*
