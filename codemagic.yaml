@@ -1,17 +1,27 @@
 workflows:
   ios-app:
-    name: Build iOS App
+    name: Drop2Life iOS Build
     environment:
       vars:
-        XCODE_WORKSPACE: "ios/App.xcworkspace"
+        XCODE_PROJECT: "ios/App.xcodeproj"
         XCODE_SCHEME: "App"
       xcode: latest
     scripts:
-      - npm install
-      - chmod +x ./node_modules/.bin/cap
-      - npx cap sync ios
-      - cd ios
-      - xcodebuild -workspace App.xcworkspace -scheme App -sdk iphoneos -configuration Release archive -archivePath $HOME/build.xcarchive
-      - xcodebuild -exportArchive -archivePath $HOME/build.xcarchive -exportOptionsPlist ../exportOptions.plist -exportPath $HOME/build
+      - name: Install dependencies
+        script: |
+          npm install
+          chmod +x ./node_modules/.bin/cap
+          npx cap sync ios
+      - name: Build iOS app
+        script: |
+          xcodebuild -project $XCODE_PROJECT \
+                     -scheme $XCODE_SCHEME \
+                     -sdk iphoneos \
+                     -configuration Release \
+                     archive -archivePath $HOME/build.xcarchive
+          xcodebuild -exportArchive \
+                     -archivePath $HOME/build.xcarchive \
+                     -exportOptionsPlist exportOptions.plist \
+                     -exportPath $HOME/build
     artifacts:
       - build/**.ipa
